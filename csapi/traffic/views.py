@@ -13,3 +13,4 @@ class AADFList(generics.ListCreateAPIView):
 #    queryset = AADF.objects.all()
 #    serializer_class = AADFSerializer
 
+

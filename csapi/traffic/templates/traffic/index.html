@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic API</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <style>
+        .navbar{
+        background-color: #669999;
+        color: white;
+        border-radius: 0px;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+
+    <h3 align="center">Traffic Data API Documentation</h3>
+    </div>
+</nav>
+<div class="container-fluid">
+
+        <div>
+            <p>This is an experimental web service allowing users to navigate and explore traffic statistics for major roads. Sample data used covers the South West region of England</p>
+        </div>
+
+        <table class="table table-condensed">
+            <thead>
+            <tr>
+                <th>Query</th><th>Request sample</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Get traffic count data for all count points</td>
+                <td><a href="https://cstrafficapi.herokuapp.com/api/aadfs">https://cstrafficapi.herokuapp.com/api/aadfs</a></td>
+            </tr>
+
+            <tr>
+                <td>Get traffic count stats for a known count point</td>
+                <td><a href="https://cstrafficapi.herokuapp.com/api/aadfs?CP=6023">https://cstrafficapi.herokuapp.com/api/aadfs?CP=6023</a></td>
+            </tr>
+
+            <tr>
+
+            <tr>
+                <td>Get traffic count stats by road</td>
+                <td><a href="https://cstrafficapi.herokuapp.com/api/aadfs?Road=M5">https://cstrafficapi.herokuapp.com/api/aadfs?Road=M5</a></td>
+            </tr>
+
+            <tr>
+                <td>Get traffic count stats by roadcategory</td>
+                <td><a href="https://cstrafficapi.herokuapp.com/api/aadfs?RoadCategory=TM">https://cstrafficapi.herokuapp.com/api/aadfs?RoadCategory=TM</a></td>
+            </tr>
+
+            <tr>
+                <td>Get traffic count stats by Year</td>
+                <td><a href="https://cstrafficapi.herokuapp.com/api/aadfs?AADFYEAR=2015">https://cstrafficapi.herokuapp.com/api/aadfs?AADFYEAR=2015</a></td>
+            </tr>
+            <tr>
+                <td>Get traffic count stats by LocalAuthority</td>
+                <td><a href="https://cstrafficapi.herokuapp.com/api/aadfs?LocalAuthority=Devon">https://cstrafficapi.herokuapp.com/api/aadfs?LocalAuthority=Devon</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    <h5><strong>Filtering</strong></h5>
+
+    API allows filtering data by using the following categories:
+    <ul>
+        <li>
+            CP (numeric count point identifier)
+        </li>
+        <li>
+            AADFYEAR (Year traffic counts were made)
+        </li>
+        <li>
+            Region
+        </li>
+        <li>
+            Road
+        </li>
+        <li>
+            RoadCategory
+        </li>
+        <li>
+            LocalAuthority
+        </li>
+    </ul>
+    <p>In addition to the filters applied above, data can be further filtered by combining the criteria. For Instance
+    To query stats by year and road we can use the request format below</p>
+
+    <p><pre><a href="https://cstrafficapi.herokuapp.com/api/aadfs?Road=M5&AADFYEAR=2015">https://cstrafficapi.herokuapp.com/api/aadfs?Road=M5&AADFYEAR=2015"</a></pre></p>
+
+    <div>
+        <h5><strong>Sample response</strong></h5>
+        <pre>HTTP 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+[
+    {
+        "id": 3453,
+        "AADFYEAR": 2015,
+        "CP": 6023,
+        "Estimation_method": "Estimated",
+        "Estimation_method_detailed": "Estimated using previous year's AADF on this link",
+        "Region": "South West",
+        "LocalAuthority": "Devon",
+        "Road": "M5",
+        "RoadCategory": "TM",
+        "Easting": 303700,
+        "Northing": 112172,
+        "StartJunction": "28",
+        "EndJunction": "27",
+        "LinkLength_km": 6.7,
+        "LinkLength_miles": 4.16,
+        "PedalCycles": 0,
+        "Motorcycles": 196,
+        "CarsTaxis": 44386,
+        "BusesCoaches": 205,
+        "LightGoodsVehicles": 7780,
+        "V2AxleRigidHGV": 1363,
+        "V3AxleRigidHGV": 477,
+        "V4or5AxleRigidHGV": 275,
+        "V3or4AxleArticHGV": 392,
+        "V5AxleArticHGV": 1601,
+        "V6orMoreAxleArticHGV": 1980,
+        "AllHGVs": 6088,
+        "AllMotorVehicles": 58654
+    },
+    {
+        "id": 3482,
+        "AADFYEAR": 2015,
+        "CP": 16023,
+        "Estimation_method": "Estimated",
+        "Estimation_method_detailed": "Estimated using previous year's AADF on this link",
+        "Region": "South West",
+        "LocalAuthority": "Devon",
+        "Road": "M5",
+        "RoadCategory": "TM",
+        "Easting": 296900,
+        "Northing": 92000,
+        "StartJunction": "30",
+        "EndJunction": "29",
+        "LinkLength_km": 1.8,
+        "LinkLength_miles": 1.12,
+        "PedalCycles": 0,
+        "Motorcycles": 151,
+        "CarsTaxis": 57023,
+        "BusesCoaches": 210,
+        "LightGoodsVehicles": 15978,
+        "V2AxleRigidHGV": 1992,
+        "V3AxleRigidHGV": 636,
+        "V4or5AxleRigidHGV": 418,
+        "V3or4AxleArticHGV": 468,
+        "V5AxleArticHGV": 1449,
+        "V6orMoreAxleArticHGV": 2019,
+        "AllHGVs": 6982,
+        "AllMotorVehicles": 80344
+    },
+    {
+        "id": 3508,
+        "AADFYEAR": 2015,
+        "CP": 26023,
+        "Estimation_method": "Estimated",
+        "Estimation_method_detailed": "Estimated using previous year's AADF on this link",
+        "Region": "South West",
+        "LocalAuthority": "Devon",
+        "Road": "M5",
+        "RoadCategory": "TM",
+        "Easting": 310259,
+        "Northing": 117200,
+        "StartJunction": "27",
+        "EndJunction": "LA Boundary",
+        "LinkLength_km": 7.1,
+        "LinkLength_miles": 4.41,
+        "PedalCycles": 0,
+        "Motorcycles": 123,
+        "CarsTaxis": 43165,
+        "BusesCoaches": 193,
+        "LightGoodsVehicles": 8818,
+        "V2AxleRigidHGV": 1456,
+        "V3AxleRigidHGV": 431,
+        "V4or5AxleRigidHGV": 190,
+        "V3or4AxleArticHGV": 414,
+        "V5AxleArticHGV": 1718,
+        "V6orMoreAxleArticHGV": 2124,
+        "AllHGVs": 6332,
+        "AllMotorVehicles": 58631
+    },
+    {
+        "id": 3530,
+        "AADFYEAR": 2015,
+        "CP": 36195,
+        "Estimation_method": "Counted",
+        "Estimation_method_detailed": "Manual count",
+        "Region": "South West",
+        "LocalAuthority": "Devon",
+        "Road": "M5",
+        "RoadCategory": "TM",
+        "Easting": 298529,
+        "Northing": 101000,
+        "StartJunction": "29",
+        "EndJunction": "28",
+        "LinkLength_km": 17.2,
+        "LinkLength_miles": 10.69,
+        "PedalCycles": 0,
+        "Motorcycles": 187,
+        "CarsTaxis": 47654,
+        "BusesCoaches": 210,
+        "LightGoodsVehicles": 9153,
+        "V2AxleRigidHGV": 1449,
+        "V3AxleRigidHGV": 451,
+        "V4or5AxleRigidHGV": 227,
+        "V3or4AxleArticHGV": 216,
+        "V5AxleArticHGV": 1377,
+        "V6orMoreAxleArticHGV": 1827,
+        "AllHGVs": 5548,
+        "AllMotorVehicles": 62752
+    },
+    {
+        "id": 3588,
+        "AADFYEAR": 2015,
+        "CP": 56192,
+        "Estimation_method": "Estimated",
+        "Estimation_method_detailed": "Estimated using previous year's AADF on this link",
+        "Region": "South West",
+        "LocalAuthority": "Devon",
+        "Road": "M5",
+        "RoadCategory": "TM",
+        "Easting": 296300,
+        "Northing": 90200,
+        "StartJunction": "31",
+        "EndJunction": "30",
+        "LinkLength_km": 5.7,
+        "LinkLength_miles": 3.54,
+        "PedalCycles": 0,
+        "Motorcycles": 314,
+        "CarsTaxis": 62019,
+        "BusesCoaches": 198,
+        "LightGoodsVehicles": 15501,
+        "V2AxleRigidHGV": 1938,
+        "V3AxleRigidHGV": 603,
+        "V4or5AxleRigidHGV": 379,
+        "V3or4AxleArticHGV": 211,
+        "V5AxleArticHGV": 1500,
+        "V6orMoreAxleArticHGV": 1945,
+        "AllHGVs": 6575,
+        "AllMotorVehicles": 84607
+    }
+]
+        </pre>
+    </div>
+</div>
+</body>
+</html>

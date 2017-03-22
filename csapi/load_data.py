@@ -1,9 +1,11 @@
 # Full path and name to your csv file
-csv_filepathname = "C:/Users/Danhiro/Desktop/import/Devon.csv"
+import os
+pth = os.path.dirname(os.path.realpath(__file__))
+csv_filepathname = os.path.join(pth,"Devon.csv")
 # Full path to your django project directory
-your_djangoproject_home = "C:/Projects/webapps/csapi"
+your_djangoproject_home = pth
 
-import sys,os,django
+import sys,django
 sys.path.append(your_djangoproject_home)
 os.environ['DJANGO_SETTINGS_MODULE'] = 'csapi.settings'
 django.setup()
